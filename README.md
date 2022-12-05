@@ -1,6 +1,6 @@
-# oop_proj
+# Hospital Inventory App
 
-A new Flutter project.
+OOP Project
 
 ## Getting Started
 
