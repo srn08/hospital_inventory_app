@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,6 +8,7 @@ import 'package:oop_proj/widgets/app_button.dart';
 import '../utils/constants.dart';
 
 class Add_Stock extends StatelessWidget {
+  final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,6 +122,9 @@ class Add_Stock extends StatelessWidget {
                         ),
                         Container(child: AppButton(ButtonType.PRIMARY, () {
                           //write the add code here
+                          // final category = controller.text;
+                          //
+                          // createMedicine(category: category);
                         }, "Add"),
                           padding: EdgeInsets.symmetric(horizontal: 10.0),
                         ),
@@ -134,5 +139,17 @@ class Add_Stock extends StatelessWidget {
         ),
       ),
     );
+
   }
+  // Future createMedicine({required String category}) async{
+  //   final meds=FirebaseFirestore.instance.collection('medicines').doc('ID');
+  //
+  //   final b ={
+  //     'category': category,
+  //     'Quantity': 5,
+  //     'Expiry Date': DateTime(2023,1,31),
+  //   };
+  //
+  //   await meds.set(b);
+  // }
 }
