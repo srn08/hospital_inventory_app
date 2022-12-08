@@ -38,6 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^3.0.1
 
+  # Firebase database
+  cloud_firestore: ^4.1.0
+
   flutter_icons: ^1.1.0
   intl: ^0.16.1
   curved_navigation_bar: ^0.3.7

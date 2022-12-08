@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oop_proj/pages/add.dart';
 import 'package:oop_proj/pages/avail.dart';
@@ -9,9 +9,14 @@ import 'package:oop_proj/pages/remove.dart';
 import 'package:oop_proj/utils/constants.dart';
 
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
+/*void main() {
+  runApp(MyApp());
+}*/
 
 class MyApp extends StatelessWidget {
   @override

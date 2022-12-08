@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "225644332441",
+    "project_id": "hospital-inventory-app",
+    "storage_bucket": "hospital-inventory-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225644332441:android:4506ca17f806ffb02e7f08",
+        "android_client_info": {
+          "package_name": "com.example.oop_proj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225644332441-orc31bepeufmuqplqusq69s7f187mmu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKjdjtWyXQZsTb1n0AtH6fiwwYrvaX2XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225644332441-orc31bepeufmuqplqusq69s7f187mmu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
