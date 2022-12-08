@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oop_proj/utils/helper.dart';
 import 'package:oop_proj/widgets/app_button.dart';
+import 'package:oop_proj/widgets/expiry_widget.dart';
 
 import '../utils/constants.dart';
 
@@ -102,9 +103,28 @@ class Login extends StatelessWidget {
                         ),
                       ),
                         SizedBox(
-                      height: 120.0,
+                      height: 40.0,
                     ),
-                    AppButton(ButtonType.PRIMARY,() {}, "Add Stock"),
+                    // AppButton(ButtonType.PRIMARY,() {}, "Add Stock")
+                        Container(
+                          height: 110.0,
+                          width: double.infinity,
+                          child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                SizedBox(width: 10.0,),
+                                Exp_Widget("category1", 32, "date1"),
+                            SizedBox(width: 10.0,),
+                            Exp_Widget("category2", 33, "date2"),
+                                SizedBox(width: 10.0,),
+                            Exp_Widget("category3", 34, "date3"),
+                                SizedBox(width: 10.0,),
+                                Exp_Widget("category4", 35, "date4"),
+                                SizedBox(width: 10.0,),
+                                Exp_Widget("category5", 36, "date5"),
+                          ]
+                        ),
+                        ),
                     ]
                     ),
                   ),
