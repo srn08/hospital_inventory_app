@@ -16,8 +16,8 @@ class Login extends StatelessWidget {
         child: Container(
           child: Stack(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              ListView(
+
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -51,7 +51,7 @@ class Login extends StatelessWidget {
                     height: 40.0,
                   ),
                   Expanded(
-                    flex: 3,
+                    flex: 6,
                     child: Container(
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(horizontal: 40.0,),
