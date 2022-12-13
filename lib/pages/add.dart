@@ -16,10 +16,11 @@ class Add_Stock extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          child: Stack(
+          child: ListView(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              ListView(
+
+
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -63,7 +64,7 @@ class Add_Stock extends StatelessWidget {
                       color: Colors.white,
 
                     ),
-                    child: Column(
+                    child: ListView(
                       children: [
                         SizedBox(
                           height: 100.0,

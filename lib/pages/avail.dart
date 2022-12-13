@@ -92,19 +92,7 @@ class Avail extends StatelessWidget {
                         SizedBox(
                           height: 30.0,
                         ),
-                        TextField(
-                          decoration: InputDecoration(
-                            hintText: "Enter Expiry Date",
-                            border: OutlineInputBorder(),
-                            hintStyle: TextStyle(
-                              color: Constants.primaryColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
+
                         Container(child: AppButton(ButtonType.PRIMARY, () {
                           //write the add code here
                         }, "Check Quantity"),
