@@ -8,19 +8,23 @@ import 'package:oop_proj/widgets/app_button.dart';
 import '../utils/constants.dart';
 
 class Add_Stock extends StatelessWidget {
-  final controller = TextEditingController();
+
   @override
+  final controllerCategory = TextEditingController();
+  final controllerQuantity = TextEditingController();
+  final controllerExpiryDate = TextEditingController();
+  final controllerStockID = TextEditingController();
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants.primaryColor,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          child: ListView(
+          child: Stack(
             children: [
               ListView(
-
-
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -42,7 +46,11 @@ class Add_Stock extends StatelessWidget {
                         ),
                         Text(
                           "Add Stock",
-                          style: Theme.of(context).textTheme.headline6?.copyWith(
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headline6
+                              ?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
                           ),
@@ -64,38 +72,41 @@ class Add_Stock extends StatelessWidget {
                       color: Colors.white,
 
                     ),
-                    child: ListView(
+                    child: Column(
                       children: [
                         SizedBox(
                           height: 100.0,
                         ),
                         TextField(
+                          controller: controllerStockID,
                           decoration: InputDecoration(
-                            hintText: "Enter Stock ID",
-                            border: OutlineInputBorder(),
-                            hintStyle: TextStyle(
-                              color: Constants.primaryColor,
-                              fontWeight: FontWeight.w600,
-                            )
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                              hintText: "Enter Category",
+                              hintText: "Enter Stock ID",
                               border: OutlineInputBorder(),
                               hintStyle: TextStyle(
                                 color: Constants.primaryColor,
                                 fontWeight: FontWeight.w600,
-                              ),
+                              )
                           ),
                         ),
                         SizedBox(
                           height: 30.0,
                         ),
                         TextField(
+                          controller: controllerCategory,
+                          decoration: InputDecoration(
+                            hintText: "Enter Category",
+                            border: OutlineInputBorder(),
+                            hintStyle: TextStyle(
+                              color: Constants.primaryColor,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30.0,
+                        ),
+                        TextField(
+                          controller: controllerQuantity,
                           decoration: InputDecoration(
                             hintText: "Enter Quantity",
                             border: OutlineInputBorder(),
@@ -109,6 +120,7 @@ class Add_Stock extends StatelessWidget {
                           height: 30.0,
                         ),
                         TextField(
+                          controller: controllerExpiryDate,
                           decoration: InputDecoration(
                             hintText: "Enter Expiry Date",
                             border: OutlineInputBorder(),
@@ -121,11 +133,20 @@ class Add_Stock extends StatelessWidget {
                         SizedBox(
                           height: 30.0,
                         ),
-                        Container(child: AppButton(ButtonType.PRIMARY, () {
+                        Container(child: AppButton(ButtonType.PRIMARY,() {
                           //write the add code here
-                          // final category = controller.text;
-                          //
-                          // createMedicine(category: category);
+
+
+                          final category = MedCat(
+                            Category: controllerCategory.text,
+                            Quantity: int.parse(controllerQuantity.text),
+                            Expiry_Date: DateTime.parse(
+                                controllerExpiryDate.text),
+                            Stock_ID: controllerStockID.text,
+                          );
+
+
+                          createMedicine(category);
                         }, "Add"),
                           padding: EdgeInsets.symmetric(horizontal: 10.0),
                         ),
@@ -140,17 +161,35 @@ class Add_Stock extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // meds for docuser , createrMedicine for createUser, category for user , b for json
+  Future createMedicine(MedCat user) async {
+    final meds = FirebaseFirestore.instance.collection('medicines').doc(controllerStockID.text);
+
+    final json = user.toJson();
+    await meds.set(json);
+
 
   }
-  // Future createMedicine({required String category}) async{
-  //   final meds=FirebaseFirestore.instance.collection('medicines').doc('ID');
-  //
-  //   final b ={
-  //     'category': category,
-  //     'Quantity': 5,
-  //     'Expiry Date': DateTime(2023,1,31),
-  //   };
-  //
-  //   await meds.set(b);
-  // }
+}
+class MedCat {
+  String Stock_ID;
+  final String Category;
+  final int Quantity;
+  final DateTime Expiry_Date;
+
+
+  MedCat({
+    required this.Stock_ID,
+    required this.Category,
+    required this.Quantity,
+    required this.Expiry_Date,
+  });
+
+  Map <String, dynamic> toJson() =>{
+    'Stock_ID': Stock_ID,
+    'Category' : Category,
+    'Quantity': Quantity,
+    'Expirty_Date': Expiry_Date,};
 }

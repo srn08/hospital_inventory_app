@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oop_proj/utils/helper.dart';
 import 'package:oop_proj/widgets/app_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../utils/constants.dart';
 
+final UserRef = FirebaseFirestore.instance.collection('medicines');
+
 class Avail extends StatelessWidget {
   @override
+  final controllerStockID = TextEditingController();
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants.primaryColor,
@@ -67,6 +73,7 @@ class Avail extends StatelessWidget {
                           height: 100.0,
                         ),
                         TextField(
+                          controller: controllerStockID,
                           decoration: InputDecoration(
                               hintText: "Enter Stock ID",
                               border: OutlineInputBorder(),
@@ -93,10 +100,16 @@ class Avail extends StatelessWidget {
                           height: 30.0,
                         ),
 
-                        Container(child: AppButton(ButtonType.PRIMARY, () {
+                        Container(padding: EdgeInsets.symmetric(horizontal: 10.0),child: AppButton(ButtonType.PRIMARY, () async {
                           //write the add code here
-                        }, "Check Quantity"),
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                          UserRef.doc(controllerStockID.text).get().then((DocumentSnapshot docw){
+                          String s = docw.data().toString()  ;
+                          /* String getS() => s;*/
+
+    });
+    }
+
+                        , "Check Quantity"),
                         ),
                       ],
                     ),
@@ -111,3 +124,6 @@ class Avail extends StatelessWidget {
     );
   }
 }
+
+
+

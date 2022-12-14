@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +8,14 @@ import 'package:oop_proj/widgets/app_button.dart';
 import '../utils/constants.dart';
 
 class Remove_Stock extends StatelessWidget {
+
   @override
+  final controllerCategory = TextEditingController();
+  final controllerQuantity = TextEditingController();
+  final controllerExpiryDate = TextEditingController();
+  final controllerStockID = TextEditingController();
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants.primaryColor,
@@ -16,8 +24,7 @@ class Remove_Stock extends StatelessWidget {
         child: Container(
           child: Stack(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              ListView(
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -39,7 +46,11 @@ class Remove_Stock extends StatelessWidget {
                         ),
                         Text(
                           "Remove Stock",
-                          style: Theme.of(context).textTheme.headline6?.copyWith(
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headline6
+                              ?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
                           ),
@@ -67,6 +78,7 @@ class Remove_Stock extends StatelessWidget {
                           height: 100.0,
                         ),
                         TextField(
+                          controller: controllerStockID,
                           decoration: InputDecoration(
                               hintText: "Enter Stock ID",
                               border: OutlineInputBorder(),
@@ -80,6 +92,7 @@ class Remove_Stock extends StatelessWidget {
                           height: 30.0,
                         ),
                         TextField(
+                          controller: controllerCategory,
                           decoration: InputDecoration(
                             hintText: "Enter Category",
                             border: OutlineInputBorder(),
@@ -93,6 +106,7 @@ class Remove_Stock extends StatelessWidget {
                           height: 30.0,
                         ),
                         TextField(
+                          controller: controllerQuantity,
                           decoration: InputDecoration(
                             hintText: "Enter Quantity",
                             border: OutlineInputBorder(),
@@ -106,6 +120,7 @@ class Remove_Stock extends StatelessWidget {
                           height: 30.0,
                         ),
                         TextField(
+                          controller: controllerExpiryDate,
                           decoration: InputDecoration(
                             hintText: "Enter Expiry Date",
                             border: OutlineInputBorder(),
@@ -118,9 +133,14 @@ class Remove_Stock extends StatelessWidget {
                         SizedBox(
                           height: 30.0,
                         ),
-                        Container(child: AppButton(ButtonType.PRIMARY, () {
+                        Container(child: AppButton(ButtonType.PRIMARY,() {
                           //write the add code here
-                        }, "Remove"),
+                          final meds = FirebaseFirestore.instance.collection('medicines').doc(controllerStockID.text);
+                          meds.update({
+                            'Quantity' : int.parse(controllerQuantity.text),
+                          });
+
+                        }, "Update Quantity"),
                           padding: EdgeInsets.symmetric(horizontal: 10.0),
                         ),
                       ],
@@ -135,4 +155,31 @@ class Remove_Stock extends StatelessWidget {
       ),
     );
   }
+
+// meds for docuser , removeMedicine for createUser, category for user , b for json
+
+//final json = user.toJson();
+//  await meds.set(json);
+
+
+}
+class MedCat {
+  String Stock_ID;
+  final String Category;
+  final int Quantity;
+  final DateTime Expiry_Date;
+
+
+  MedCat({
+    required this.Stock_ID,
+    required this.Category,
+    required this.Quantity,
+    required this.Expiry_Date,
+  });
+
+  Map <String, dynamic> toJson() =>{
+    'Stock_ID': Stock_ID,
+    'Category' : Category,
+    'Quantity': Quantity,
+    'Expirty_Date': Expiry_Date,};
 }

@@ -15,7 +15,6 @@ class Home extends StatelessWidget {
       backgroundColor: Constants.primaryColor,
       body: Container(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
                 flex: 3,

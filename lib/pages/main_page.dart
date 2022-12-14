@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oop_proj/utils/helper.dart';
 import 'package:oop_proj/widgets/app_button.dart';
+import 'package:oop_proj/widgets/expiry_widget.dart';
 
 import '../utils/constants.dart';
 
@@ -53,39 +54,39 @@ class Login extends StatelessWidget {
                   Expanded(
                     flex: 6,
                     child: Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.symmetric(horizontal: 40.0,),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30.0),
-                        topRight: Radius.circular(30.0),
-                      ),
-                      color: Colors.white,
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(horizontal: 40.0,),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0),
+                          topRight: Radius.circular(30.0),
+                        ),
+                        color: Colors.white,
 
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 120.0,
+                          ),
+                          AppButton(ButtonType.PRIMARY,() {
+                            nextScreen(context, "/add");
+                          }, "Add Stock"),
+                          SizedBox(
+                            height: 35.0,
+                          ),
+                          AppButton(ButtonType.PRIMARY,() {
+                            nextScreen(context, "/remove");
+                          }, "Update Stock"),
+                          SizedBox(
+                            height: 35.0,
+                          ),
+                          AppButton(ButtonType.PRIMARY,() {
+                            nextScreen(context, "/avail");
+                          }, "Check Medicine Availibilty"),
+                        ],
+                      ),
                     ),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 120.0,
-                        ),
-                        AppButton(ButtonType.PRIMARY,() {
-                          nextScreen(context, "/add");
-                        }, "Add Stock"),
-                        SizedBox(
-                          height: 35.0,
-                        ),
-                        AppButton(ButtonType.PRIMARY,() {
-                          nextScreen(context, "/remove");
-                        }, "Remove Stock"),
-                        SizedBox(
-                          height: 35.0,
-                        ),
-                        AppButton(ButtonType.PRIMARY,() {
-                          nextScreen(context, "/avail");
-                        }, "Check Medicine Availibilty"),
-                      ],
-                    ),
-                  ),
                   ),
                   Expanded(
                     flex: 2,
@@ -93,21 +94,40 @@ class Login extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                       ),
-                    child: Column(
-                      children: [
-                      Text("Expiring Stock",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20.0,
-                        ),
+                      child: Column(
+                          children: [
+                            Text("Expiring Stock",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 40.0,
+                            ),
+                            // AppButton(ButtonType.PRIMARY,() {}, "Add Stock")
+                            Container(
+                              height: 110.0,
+                              width: double.infinity,
+                              child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: [
+                                    SizedBox(width: 10.0,),
+                                    Exp_Widget("category1", 32, "date1"),
+                                    SizedBox(width: 10.0,),
+                                    Exp_Widget("category2", 33, "date2"),
+                                    SizedBox(width: 10.0,),
+                                    Exp_Widget("category3", 34, "date3"),
+                                    SizedBox(width: 10.0,),
+                                    Exp_Widget("category4", 35, "date4"),
+                                    SizedBox(width: 10.0,),
+                                    Exp_Widget("category5", 36, "date5"),
+                                  ]
+                              ),
+                            ),
+                          ]
                       ),
-                        SizedBox(
-                      height: 120.0,
                     ),
-                    AppButton(ButtonType.PRIMARY,() {}, "Add Stock"),
-                    ]
-                    ),
-                  ),
                   ),
                 ],
               ),
