@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oop_proj/utils/helper.dart';
 import 'package:oop_proj/widgets/app_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:core';
 
 import '../utils/constants.dart';
 
@@ -104,7 +105,7 @@ class Avail extends StatelessWidget {
                           //write the add code here
                           UserRef.doc(controllerStockID.text).get().then((DocumentSnapshot docw){
                           String s = docw.data().toString()  ;
-                          /* String getS() => s;*/
+
 
     });
     }

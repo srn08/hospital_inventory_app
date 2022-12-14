@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oop_proj/utils/helper.dart';
 import 'package:oop_proj/widgets/app_button.dart';
 import 'package:oop_proj/widgets/expiry_widget.dart';
+import 'package:oop_proj/widgets/expiry_2.dart';
 
 import '../utils/constants.dart';
 
@@ -84,6 +85,12 @@ class Login extends StatelessWidget {
                           AppButton(ButtonType.PRIMARY,() {
                             nextScreen(context, "/avail");
                           }, "Check Medicine Availibilty"),
+                          SizedBox(
+                            height: 35.0,
+                          ),
+                          AppButton(ButtonType.PRIMARY,() {
+                            nextScreen(context, "Display_Expiry");
+                          }, "Expiring Soon!!!"),
                         ],
                       ),
                     ),
@@ -113,7 +120,6 @@ class Login extends StatelessWidget {
                                   scrollDirection: Axis.horizontal,
                                   children: [
                                     SizedBox(width: 10.0,),
-                                    Exp_Widget("category1", 32, "date1"),
                                     SizedBox(width: 10.0,),
                                     Exp_Widget("category2", 33, "date2"),
                                     SizedBox(width: 10.0,),

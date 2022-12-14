@@ -7,6 +7,8 @@ import 'package:oop_proj/pages/home.dart';
 import 'package:oop_proj/pages/main_page.dart';
 import 'package:oop_proj/pages/remove.dart';
 import 'package:oop_proj/utils/constants.dart';
+import 'package:oop_proj/widgets/expiry_2.dart';
+import 'package:oop_proj/widgets/expiry_3.dart';
 
 
 
@@ -58,6 +60,10 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     case "/avail":
       return MaterialPageRoute(builder: (BuildContext context) {
         return Avail();
+      });
+    case "Display_Expiry":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return DisplayExpiringState();
       });
     default:
       return MaterialPageRoute(builder: (BuildContext context) {
